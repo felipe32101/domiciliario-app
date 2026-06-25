@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#0a0f1e" />
+  <meta name="description" content="App para calcular ganancias diarias del domiciliario" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="MiRuta" />
+  <title>MiRuta — Ganancias del día</title>
+  <link rel="manifest" href="manifest.json" />
+  <link rel="apple-touch-icon" href="icons/icon-192.png" />
+  <link rel="icon" type="image/png" href="icons/icon-192.png" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav class="navbar">
+    <div class="nav-brand">
+      <span class="brand-icon">🛵</span>
+      <span class="brand-name">MiRuta</span>
+    </div>
+    <div class="nav-tabs">
+      <button class="nav-tab active" data-tab="calcular">Calcular</button>
+      <button class="nav-tab" data-tab="historial">Historial</button>
+    </div>
+  </nav>
+
+  <!-- TAB: CALCULAR -->
+  <main class="tab-content active" id="tab-calcular">
+
+    <!-- Selector de fecha -->
+    <section class="card date-card">
+      <label class="field-label">Fecha del registro</label>
+      <input type="date" id="fecha" class="date-input" />
+    </section>
+
+    <!-- Base inicial -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="step-badge">1</span>
+        Dinero base al inicio del día
+      </h2>
+      <div class="input-group">
+        <span class="currency-prefix">$</span>
+        <input type="number" id="base" class="money-input" placeholder="0" min="0" inputmode="decimal" />
+      </div>
+    </section>
+
+    <!-- Dinero final -->
+    <section class="card">
+      <h2 class="section-title">
+        <span class="step-badge">2</span>
+        Dinero final contado
+      </h2>
+
+      <div class="split-inputs">
+        <div class="input-block">
+          <label class="field-label">
+            <span class="label-icon">💵</span> Efectivo
+          </label>
+          <div class="input-group">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="efectivo" class="money-input" placeholder="0" min="0" inputmode="decimal" />
+          </div>
+        </div>
+
+        <div class="divider-v"></div>
+
+        <div class="input-block">
+          <label class="field-label">
+            <span class="label-icon">📲</span> Transferencia
+          </label>
+          <div class="input-group">
+            <span class="currency-prefix">$</span>
+            <input type="number" id="transferencia" class="money-input" placeholder="0" min="0" inputmode="decimal" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Total final calculado en vivo -->
+      <div class="total-final-preview">
+        Total final: <strong id="preview-total">$0</strong>
+      </div>
+    </section>
+
+    <!-- Botón calcular -->
+    <button class="btn-calcular" id="btn-calcular">Calcular ganancia</button>
+
+    <!-- Resultado -->
+    <section class="card result-card hidden" id="resultado">
+      <div class="result-header">Resultado del día</div>
+      <div class="result-date" id="result-date"></div>
+
+      <div class="result-grid">
+        <div class="result-item">
+          <span class="result-label">Base inicial</span>
+          <span class="result-value neutral" id="res-base"></span>
+        </div>
+        <div class="result-item">
+          <span class="result-label">Total final</span>
+          <span class="result-value neutral" id="res-total"></span>
+        </div>
+        <div class="result-divider"></div>
+        <div class="result-item big">
+          <span class="result-label">Ganancia neta</span>
+          <span class="result-value" id="res-ganancia"></span>
+        </div>
+      </div>
+
+      <button class="btn-guardar" id="btn-guardar">💾 Guardar registro</button>
+      <div class="save-msg hidden" id="save-msg">✅ Registro guardado</div>
+    </section>
+
+  </main>
+
+  <!-- TAB: HISTORIAL -->
+  <main class="tab-content" id="tab-historial">
+    <section class="card historial-header">
+      <div class="historial-title">Historial de ganancias</div>
+      <div class="historial-stats">
+        <div class="stat-box">
+          <span class="stat-label">Total acumulado</span>
+          <span class="stat-value" id="stat-total">$0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Días registrados</span>
+          <span class="stat-value" id="stat-dias">0</span>
+        </div>
+        <div class="stat-box">
+          <span class="stat-label">Promedio/día</span>
+          <span class="stat-value" id="stat-promedio">$0</span>
+        </div>
+      </div>
+    </section>
+
+    <div id="historial-lista" class="historial-lista">
+      <div class="empty-state" id="empty-state">
+        <div class="empty-icon">📋</div>
+        <p>Aún no hay registros guardados.<br>Calcula tu primera ganancia.</p>
+      </div>
+    </div>
+
+    <button class="btn-limpiar hidden" id="btn-limpiar">🗑 Borrar todo el historial</button>
+  </main>
+
+  <script src="app.js"></script>
+</body>
+</html>

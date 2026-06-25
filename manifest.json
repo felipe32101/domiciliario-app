@@ -1,0 +1,24 @@
+{
+  "name": "MiRuta — Ganancias del día",
+  "short_name": "MiRuta",
+  "description": "Calcula y registra las ganancias diarias del domiciliario",
+  "start_url": "./",
+  "display": "standalone",
+  "orientation": "portrait",
+  "theme_color": "#0a0f1e",
+  "background_color": "#0a0f1e",
+  "icons": [
+    {
+      "src": "icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
