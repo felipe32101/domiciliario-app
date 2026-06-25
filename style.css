@@ -90,16 +90,16 @@ body {
 
 /* === TABS === */
 .tab-content { display: none; }
-.tab-content.active { display: block; }
+.tab-content.active { display: flex; flex-direction: column; }
 
 /* === LAYOUT === */
 main {
   max-width: 480px;
   margin: 0 auto;
-  padding: 24px 18px;
+  padding: 28px 20px 48px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 24px;
 }
 
 /* === CARD === */
@@ -107,8 +107,9 @@ main {
   background: var(--bg-card);
   border: 1px solid var(--border-bright);
   border-radius: var(--radius);
-  padding: 22px;
+  padding: 24px;
   box-shadow: 0 0 0 1px rgba(0,170,255,0.04), 0 4px 24px rgba(0,0,0,0.5);
+  margin-bottom: 0;
 }
 
 /* === DATE CARD === */
@@ -212,7 +213,7 @@ main {
 /* Remove spinner arrows */
 .money-input::-webkit-inner-spin-button,
 .money-input::-webkit-outer-spin-button { -webkit-appearance: none; margin: 0; }
-.money-input[type=number] { -moz-appearance: textfield; }
+.money-input[type=number] { appearance: textfield; -moz-appearance: textfield; }
 
 /* === SPLIT INPUTS === */
 .split-inputs {
@@ -357,7 +358,6 @@ main {
 }
 
 /* === HISTORIAL === */
-.historial-header { }
 
 .historial-title {
   font-size: 0.85rem;
